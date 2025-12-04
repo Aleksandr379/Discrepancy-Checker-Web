@@ -202,6 +202,7 @@ def handle_too_large(e):
 def handle_unexpected_error(e):
     app.logger.error("Server error", exc_info=True)
     return "An internal server error occurred. Please try again later.", 500
-
+  
 if __name__ == "__main__":
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
